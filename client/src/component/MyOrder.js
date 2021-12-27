@@ -48,7 +48,7 @@ const MyOrder = () => {
 
     const edit = async (_id) => {
         try {
-            await axios.get(`http://localhost:5000/product/${_id}`)
+            await axios.get(`/product/${_id}`)
             history.push(`/user/${_id}`)
         } catch {
             console.log('error')
