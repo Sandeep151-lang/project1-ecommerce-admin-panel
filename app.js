@@ -49,6 +49,9 @@ app.use('/', payment);
 
 if (process.env.Mode_Env = "production") {
   app.use(express.static("client/build"));
+  app.get("*", function (request, response) {
+    response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  });
 
 }
 
