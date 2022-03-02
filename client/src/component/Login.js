@@ -47,6 +47,7 @@ const Login = () => {
     return (
         <div className="container">
             <h2 className="text-center mt-5">Login User</h2>
+            <hr />
             <Form inline className="mt-5 ml-5">
                 <FormGroup className="mb-3 mr-sm-2 mb-sm-0">
                     <Label for="examplePassword" className="mr-sm-2">Enter email</Label>
