@@ -35,12 +35,12 @@ const Login = () => {
                 dispatch({ type: 'USER', payload: true })
                 localStorage.setItem('jwt', jwt)
                 setregister(res.data)
-                window.alert('login successfull')
+                window.alert(res.data.message)
                 history.push('/home')
             }
-        } catch {
+        } catch (error) {
 
-            window.alert('invalid credintial')
+            window.alert(error.response.data.message)
         }
     }
 

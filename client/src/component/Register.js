@@ -23,11 +23,10 @@ const Register = () => {
             const url = `/register`;
             const d = await axios.post(url, register);
             setregister(d.data);
-            window.alert('user registerd');
+            window.alert(d.data.message)
             history.push('/login')
-        } catch {
-            console.log('error')
-            window.alert('invalid')
+        } catch (error) {
+            window.alert(error.response.data.message)
         }
     }
 
