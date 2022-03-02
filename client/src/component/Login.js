@@ -56,7 +56,7 @@ const Login = () => {
                     <Label for="exampleEmail" className="mr-sm-2">Enter Password</Label>
                     <Input type="password" id="password" placeholder="Enter password" value={register.password} onChange={onchange} />
                 </FormGroup>
-                <Button className='btn my-2  btn-success' onClick={onclick}>submit</Button>
+                <Button className='btn my-5  btn-success btn-login' onClick={onclick}>submit</Button>
 
             </Form >
         </div>
