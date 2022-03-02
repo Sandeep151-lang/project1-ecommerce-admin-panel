@@ -21,6 +21,8 @@ import './App.css'
 
 
 
+
+
 export const MyContext = React.createContext();
 
 
@@ -32,6 +34,10 @@ const App = () => {
   const [loading, setloading] = useState(true);
   const [data, setdata] = useState([]);
   const [cartItems, setCartItems] = useState(carts);
+  const [pageNumbers, setPageNumber] = useState(0);
+  const [numberofPages, setnumberofPages] = useState(0)
+
+
 
 
 
@@ -39,13 +45,15 @@ const App = () => {
     setCartItems([...cartItems, product])
   }
 
-  const url = `/getproduct`;
+  const url = `http://localhost:5000/getproduct?page=${pageNumbers}`;
   const userdata = async () => {
     const token = window.localStorage.getItem('jwt')
     try {
       const res = await axios.get(url, { headers: { "Authorization": `Bearer ${token}` } });
       if (res.status === 200) {
         setdata(res.data.message);
+        setnumberofPages(res.data.totalPages);
+
         setloading(false);
       }
     } catch (err) {
@@ -53,6 +61,13 @@ const App = () => {
     }
   }
 
+  const gotoPrevious = () => {
+    setPageNumber(Math.max(0, pageNumbers - 1));
+  };
+
+  const gotoNext = () => {
+    setPageNumber(Math.min(numberofPages - 1, pageNumbers + 1));
+  };
 
   const onRemove = async (product) => {
     setCartItems(cartItems.filter((x) => x._id !== product._id))
@@ -65,12 +80,12 @@ const App = () => {
   useEffect(() => {
     userdata();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [pageNumbers])
 
   // const token = window.localStorage.getItem('jwt')
   return <>
     <Router>
-      <MyContext.Provider value={{ userdata, onRemove, onAdd, data, cartItems, loading, state, dispatch }}>
+      <MyContext.Provider value={{ userdata, onRemove, onAdd, data, cartItems, loading, state, dispatch, gotoNext, gotoPrevious, setPageNumber, pageNumbers }}>
         <Navs />
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -82,7 +97,7 @@ const App = () => {
           <Route path="/product/:_id" component={Order} />
           <Route path='/my-order' component={MyOrder} />
           <Route path='/user/:_id' component={UserOrder} />
-          {/* <Route path='/create' component={CreaProduct}/> */}
+
           <Redirect to="/" />
         </Switch>
       </MyContext.Provider>

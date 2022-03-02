@@ -7,6 +7,7 @@
   pointer-events: none;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -43,4 +44,30 @@
     font-size: 10px!important;
     
   }
+}
+
+.background-img{
+  width: 100%;
+  height: 80vh;
+  background-image: url('https://st2.depositphotos.com/46171552/47990/i/1600/depositphotos_479904630-stock-photo-amazed-couple-credit-card-looking.jpg');
+  background-repeat: no-repeat;
+}
+
+
+.prv-button{
+  margin-left:40% ;
+}
+.btn-login{
+  width: 100%;
+  margin: 2rem 0px;
+}
+.footer{
+  
+  width: 100%;
+  height: 30vh;
+  background-color: rgb(48, 46, 46);
+}
+.footer-contain{
+  display: flex;
+  justify-content: first baseline;
 }

@@ -58,11 +58,13 @@ router.post('/product', adminAuth, adminrole, upload.single('images'), async fun
 /* GET home page. */
 //Get all products listing
 router.get('/getproduct', async function (req, res) {
-
+    const PAGE_SOZE = 6;
+    const page = parseInt(req.query.page || "0");
+    const total = await Product.countDocuments({});
     try {
-        await Product.find().then((doc) => {
-            res.status(200).json({ message: doc })
-            console.log(doc)
+        await Product.find().limit(PAGE_SOZE).skip(PAGE_SOZE * page).then((doc) => {
+            res.status(200).json({ message: doc, totalPages: Math.ceil(total / PAGE_SOZE) })
+
         })
     } catch {
         res.json({ message: `product not get` })

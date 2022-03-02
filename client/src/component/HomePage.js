@@ -3,11 +3,15 @@ import { MyContext } from '../App';
 import { Card, Button, CardText, Row, Col } from 'reactstrap';
 import LoadingSpinners from './LoadingSpinners';
 import axios from 'axios'
+import Footer from './Footer';
 //import { useHistory } from 'react-router-dom';
 
 const HomePage = () => {
     // const history = useHistory();
     const context = useContext(MyContext);
+    const pages = new Array(context.pageNumbers + 1).fill(null).map((v, i) => i)
+
+
     const load = context.loading;
     const [data, setdata] = useState([]);
     const userdata = async () => {
@@ -17,13 +21,10 @@ const HomePage = () => {
                 withCredentials: true,
                 credentials: "include",
             }).get('/about')
-            // console.log(res.data.message)
+
             if (res.status === 200) {
                 localStorage.getItem('jwt');
                 setdata(res.data.message);
-                // var len = res.data.message.cartItems.length
-                // console.log(len)
-                // console.log(`hello ${res.data.message.cartItems}`)
             }
         } catch (err) {
             console.log(err)
@@ -42,6 +43,9 @@ const HomePage = () => {
         return <LoadingSpinners />
     } else {
         return <>
+            <div className='background-img'>
+
+            </div>
             <div className='w3-container mt-5'>
                 <div className="w3-card-4  container-fluid">
                     <Row>
@@ -67,8 +71,20 @@ const HomePage = () => {
                             })
                         }
                     </Row>
+
                 </div>
+                <div className='pagination my-2'>
+
+                    <button onClick={context.gotoPrevious} className='prv-button btn-primary btn'>Previous</button>
+                    {pages.map((index, key) => (
+
+                        <button key={key} onClick={() => context.setPageNumber(index)} className='btn-button btn-success btn'>{index + 1}</button>
+                    ))}
+                    <button onClick={context.gotoNext} className='next-button btn-primary btn'>Next</button>
+                </div>
+
             </div>
+            <Footer />
         </>
     }
 }
