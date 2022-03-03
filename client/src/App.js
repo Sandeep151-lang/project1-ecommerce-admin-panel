@@ -45,7 +45,7 @@ const App = () => {
     setCartItems([...cartItems, product])
   }
 
-  const url = `http://localhost:5000/getproduct?page=${pageNumbers}`;
+  const url = `/getproduct?page=${pageNumbers}`;
   const userdata = async () => {
     const token = window.localStorage.getItem('jwt')
     try {
