@@ -35,7 +35,7 @@ const Login = () => {
                 dispatch({ type: 'USER', payload: true })
                 localStorage.setItem('jwt', jwt)
                 setregister(res.data)
-                window.alert(res.data.message)
+                window.alert('Login successfull')
                 history.push('/home')
             }
         } catch (error) {
