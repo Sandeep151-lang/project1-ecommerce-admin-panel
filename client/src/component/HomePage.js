@@ -54,9 +54,9 @@ const HomePage = () => {
                                 //destructuring the products 
                                 const { product_image, product_price, product_name } = product;
                                 return (
-                                    <Col sm="4" key={key} className="py-3 ">
-                                        <Card body style={{ 'height': '15rem' }}>
-                                            <img src={product_image} className="card-img-top" alt=".." style={{ 'height': "5rem", }} />
+                                    <Col sm="3" key={key} className="py-3 ">
+                                        <Card body style={{ 'height': '18rem' }}>
+                                            <img src={product_image} className="card-img-top" alt=".." style={{ 'height': "6rem", }} />
                                             <CardText className="text-center mt-2" style={{ 'fontWeight': 'bolder' }}>{product_name}</CardText>
                                             {/* <CardText className="text-center " style={{ 'fontWeight': 'bold' }}>{product_description}</CardText> */}
                                             <CardText className="text-center bold text-bolder" style={{ 'color': '#c78d8d', 'fontWeight': 'bolder' }}>&#8377;{product_price}<span className="text-bolder">/-</span></CardText>
