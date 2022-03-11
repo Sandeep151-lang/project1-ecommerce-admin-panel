@@ -17,7 +17,7 @@ const HomePage = () => {
     const userdata = async () => {
         try {
             const res = await axios.create({
-                // baseURL: "http://localhost:5000",
+//                 baseURL: "http://localhost:5000",
                 withCredentials: true,
                 credentials: "include",
             }).get('/about')
@@ -55,11 +55,11 @@ const HomePage = () => {
                                 const { product_image, product_price, product_name } = product;
                                 return (
                                     <Col sm="4" key={key} className="py-3 ">
-                                        <Card body>
-                                            <img src={product_image} className="card-img-top" alt=".." style={{ 'height': "200px" }} />
+                                        <Card body style={{ 'height': '15rem' }}>
+                                            <img src={product_image} className="card-img-top" alt=".." style={{ 'height': "5rem", }} />
                                             <CardText className="text-center mt-2" style={{ 'fontWeight': 'bolder' }}>{product_name}</CardText>
                                             {/* <CardText className="text-center " style={{ 'fontWeight': 'bold' }}>{product_description}</CardText> */}
-                                            <CardText className="text-center bold text-bolder" style={{ 'color': 'red', 'fontWeight': 'bolder', 'fontSize': '130%', }}>{product_price}<span className="text-bolder">/-&#8377;</span></CardText>
+                                            <CardText className="text-center bold text-bolder" style={{ 'color': '#c78d8d', 'fontWeight': 'bolder' }}>&#8377;{product_price}<span className="text-bolder">/-</span></CardText>
                                             {
                                                 data.name ? <Button className={"btn my-2 mx-5 btn-success " + (context.cartItems.find((x) => x._id === product._id) ? "disabled" : "btn-success")} onClick={() => context.onAdd(product)}>Add to Cart</Button> : <Button className="btn my-4 mx-5 btn-success" onClick={login}>Add to Cart</Button>
                                             }
@@ -78,7 +78,7 @@ const HomePage = () => {
                     <button onClick={context.gotoPrevious} className='prv-button btn-primary btn'>Previous</button>
                     {pages.map((index, key) => (
 
-                        <button key={key} onClick={() => context.setPageNumber(index)} className='btn-button btn-success btn'>{index + 1}</button>
+                        <button key={key} onClick={() => context.setPageNumber(index)} className='btn-button btn-success btn mx-2'>{index + 1}</button>
                     ))}
                     <button onClick={context.gotoNext} className='next-button btn-primary btn'>Next</button>
                 </div>
