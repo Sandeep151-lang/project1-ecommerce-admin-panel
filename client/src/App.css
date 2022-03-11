@@ -51,11 +51,11 @@ body{
 }
 
 .background-img{
-  width: 100%;
   height: 50vh;
-  background-image: url('https://st2.depositphotos.com/46171552/47990/i/1600/depositphotos_479904630-stock-photo-amazed-couple-credit-card-looking.jpg');
+  background-image: url('https://cdn.pixabay.com/photo/2016/08/14/16/48/internet-1593358_960_720.jpg');
   background-repeat: no-repeat;
-  
+  background-size: 100% 100%; 
+  opacity: 0.8;
 }
 
 .second +p{
