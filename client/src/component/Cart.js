@@ -67,7 +67,7 @@ const Cart = () => {
                                                     <div className="card-body">
                                                         <h5 className="card-title">{product_name}</h5>
                                                         <p className="card-text">{product_description}</p>
-                                                        <p className="card-text"><small className="text-muted">{product_price} /- &#8377;</small></p>
+                                                        <p className="card-text"><small className="text-muted"> &#8377;{product_price} /-</small></p>
                                                         <p className="card-text">  <Button className="btn btn-success" onClick={() => context.onRemove(product)}>Remove from Cart</Button></p>
                                                     </div>
                                                 </div>
@@ -78,7 +78,7 @@ const Cart = () => {
                             }
                         </Col>
                         <Col xs="4">
-                            <h3 className='mt-5'>Total price is <span style={{ 'color': 'red' }}> {price}/-&#8377;</span></h3>
+                            <h3 className='mt-5'>Total price is <span style={{ 'color': 'red' }}> &#8377;{price}/-</span></h3>
                             <Stripe total={price}
                                 name={data.name}
                                 email={data.email}
