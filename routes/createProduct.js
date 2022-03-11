@@ -58,7 +58,7 @@ router.post('/product', adminAuth, adminrole, upload.single('images'), async fun
 /* GET home page. */
 //Get all products listing
 router.get('/getproduct', async function (req, res) {
-    const PAGE_SOZE = 6;
+    const PAGE_SOZE = 8;
     const page = parseInt(req.query.page || "0");
     const total = await Product.countDocuments({});
     try {
